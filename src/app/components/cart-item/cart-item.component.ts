@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CartItemModel } from 'src/app/models/cart-item-model';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
+  @Input()
+  cartItem!: CartItemModel;
   constructor() { }
+  cartItemTotal!: number;
+
 
   ngOnInit(): void {
   }
+
+
+
+    if(cartItem: any) {
+      this.cartItemTotal = cartItem.productPrice * cartItem.qty;
+    }
+
 
 }
