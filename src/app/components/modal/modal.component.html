@@ -1,1 +1,20 @@
-<p>modal works!</p>
+<div class="modal-header">
+<h4>Su compra se ha realizado con exito</h4>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss()">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+<div class="modal-body">
+  <h3>Productos:</h3>
+  <hr>
+  <div class="list-group" *ngFor= "let item of items">
+    <a href="#" class="list-group-item list-group-item-action disabled">
+    <p>Producto:<b> {{item.name}}.</b></p>
+    <p>Unidades: <b>{{item.quantity}}.</b></p>
+    <p>Precio: <b>{{item.unit_amount.value}} €.</b></p>
+  </a>
+  </div>
+
+  <h3><b>Total: {{amount}}€.</b></h3>
+</div>

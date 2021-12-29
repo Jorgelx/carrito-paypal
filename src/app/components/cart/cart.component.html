@@ -23,12 +23,20 @@
     </ul>
   </div>
   <div class="alert alert-warning text-center" style="margin-top: 3%;">
-    <h4><strong>Total:</strong> {{total}}</h4>
+    <h4><strong>Total:</strong> {{total}} €</h4>
   </div>
+
+  <div class="text-center" style="margin-top: 3%;">
+  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </div>
+
   <div class="text-center" style="margin-top: 3%;">
     <button class="btn btn-outline-danger btn-block text-center" (click) = "emptyCart()">
       <i class="fas fa-ban"> Vaciar Carrito </i>
     </button>
+
+
+
   </div>
 
 </div>
