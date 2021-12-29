@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CartItemModel } from 'src/app/models/cart-item-model';
 import { Product } from 'src/app/models/product';
 import { MessageService } from 'src/app/services/message.service';
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
   constructor(
     private messageService: MessageService,
     private storageService: StorageService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService
   ) { }
 
   cartItems = [] as any;
@@ -63,6 +65,7 @@ export class CartComponent implements OnInit {
         layout: 'vertical'
       },
       onApprove: (data, actions) => {
+        this.spinner.show();
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then((details: any) => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
@@ -77,6 +80,7 @@ export class CartComponent implements OnInit {
           data.purchase_units[0].amount.value
         );
         this.emptyCart();
+        this.spinner.hide();
       },
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
