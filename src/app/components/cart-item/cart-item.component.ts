@@ -21,6 +21,7 @@ export class CartItemComponent implements OnInit {
 
     if(cartItem: any) {
       this.cartItemTotal = cartItem.productPrice * cartItem.qty;
+      
     }
 
 
